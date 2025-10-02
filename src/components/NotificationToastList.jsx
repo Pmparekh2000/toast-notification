@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 import NotificationToast from './NotificationToast';
+import { POSITIONS_OPTIONS } from '../constants/constants';
 
 const NotificationToastList = () => {
     const [toastList, setToastList] = useState([]);
@@ -63,10 +64,9 @@ const NotificationToastList = () => {
             </div>
             <div>
                 <select name="toast-position" id="toast-position" value={toastPosition} onChange={(e) => setToastPosition(e.target.value)}>
-                    <option value="top-right">Top Right</option>
-                    <option value="top-left">Top Left</option>
-                    <option value="bottom-right">Bottom Right</option>
-                    <option value="bottom-left">Bottom Left</option>
+                {POSITIONS_OPTIONS?.map((position_option) => {
+                    return <option key={position_option.value} value={position_option.value}>{position_option.text}</option>
+                })}
                 </select>
             </div>
         </div>
